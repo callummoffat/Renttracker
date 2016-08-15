@@ -1,0 +1,75 @@
+﻿[
+  {
+    "baths": 3,
+    "beds": 4,
+    "description": "A sample house",
+    "images": [
+      "https://cah-com-res.cloudinary.com/c_thumb,h_500,w_1000/production/marketing-photos/16802/s6qkfekj4a7g2skhdui6",
+      "https://cah-com-res.cloudinary.com/c_thumb,h_500,w_1000/production/marketing-photos/16802/q4o9kjxmudjuuqumrakn"
+    ],
+    "location": {
+      "address": "40B Tiawhere Road",
+      "suburb": "Parksville",
+      "city": "Potau",
+      "postCode": "6661",
+      "region": "Imaginary",
+      "country": "New Zealand",
+      "latitude": 40.269950,
+      "longitude": -76.880032
+    },     
+    "area": 2219,
+    "price":  1450
+  },
+  {
+    "baths": 1,
+    "beds": 2,
+    "description": "A sample house",
+    "images": [
+      "https://cah-com-res.cloudinary.com/c_thumb,h_500,w_1000/production/marketing-photos/16802/s6qkfekj4a7g2skhdui6",
+      "https://cah-com-res.cloudinary.com/c_thumb,h_500,w_1000/production/marketing-photos/16802/q4o9kjxmudjuuqumrakn"
+    ],
+    "location": {
+      "address": "3521 Victoria Crescent",
+      "suburb": "Summertown",
+      "city": "Houston",
+      "region": "Texas",
+      "postCode": "534139",
+      "country": "United States"
+    },
+    "area": 2219,
+    "price":  12000
+  },
+  {
+    "baths": 4,
+    "beds": 5,
+    "description": "A sample house",
+    "images": [
+      "https://cah-com-res.cloudinary.com/c_thumb,h_500,w_1000/production/marketing-photos/16802/s6qkfekj4a7g2skhdui6",
+      "https://cah-com-res.cloudinary.com/c_thumb,h_500,w_1000/production/marketing-photos/16802/q4o9kjxmudjuuqumrakn"
+    ],
+    "location": {
+      "latitude": 40.3846,
+      "longitude": -65.4623
+    },
+    "area": 3219,
+    "price":  16000
+  },
+  {
+    "baths": 1,
+    "beds": 1,
+    "description": "A sample house",
+    "images": [
+      "https://cah-com-res.cloudinary.com/c_thumb,h_500,w_1000/production/marketing-photos/16802/s6qkfekj4a7g2skhdui6",
+      "https://cah-com-res.cloudinary.com/c_thumb,h_500,w_1000/production/marketing-photos/16802/q4o9kjxmudjuuqumrakn"
+    ],
+    "location": {
+      "address": "5528 Mavis Ave",
+      "city": "Whittier",
+      "postCode":  "90601-2123",
+      "region": "California",
+      "country": "United States"
+    },
+    "area": 2219,
+    "price":  4000
+  }
+]

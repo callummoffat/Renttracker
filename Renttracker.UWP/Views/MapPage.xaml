@@ -1,0 +1,42 @@
+﻿<Page
+    x:Class="Renttracker.Views.MapPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Renttracker.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:maps="using:Windows.UI.Xaml.Controls.Maps"
+    xmlns:vm="using:Renttracker.ViewModels"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:controls="using:Template10.Controls">
+
+    <Page.DataContext>
+        <vm:MapPageViewModel x:Name="ViewModel"/>
+    </Page.DataContext>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <controls:PageHeader x:Name="Page_Header" Content="House Location" Frame="{x:Bind Frame}">
+            <AppBarButton x:Name="DrivingDirections" Label="Get Directions" Icon="Directions" Click="DrivingDirections_Click"/>
+        </controls:PageHeader>
+        <controls:ModalDialog x:Name="ModalDialog" IsModal="{x:Bind ViewModel.IsLocationAvailable, Mode=OneWay}" Margin="0,48,0,0">
+            <controls:ModalDialog.ModalContent>
+                <maps:MapControl IsEnabled="{Binding ElementName=ModalDialog, Path=IsModal, Mode=OneWay}" ColorScheme="Light" DesiredPitch="0" Heading="360" ZoomLevel="18" PanInteractionMode="Auto" RotateInteractionMode="GestureOnly"
+                         TiltInteractionMode="GestureOnly" ZoomInteractionMode="GestureOnly" LandmarksVisible="True" BusinessLandmarksVisible="True"
+                         WatermarkMode="Automatic" x:Name="MainMapControl" Grid.Row="1" HorizontalAlignment="Stretch"
+                         VerticalAlignment="Stretch" MapServiceToken="QaRpnH3tREpexWlb668X~59dRrh2hYh-Xuw5QL-G1Vg~AvPKUytGs4SGEfaVOCmjC554LE0kQD_DxBzQS8FKA7Lfk7TDGRhOzfdkz-c9vti9"/>
+            </controls:ModalDialog.ModalContent>
+            <controls:ModalDialog.Content>
+                <RelativePanel>
+                    <TextBlock x:Name="locationDeniedText" Text="You haven't given permission to access your location."
+                               TextWrapping="Wrap"
+                               RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True"/>
+                    <Button HorizontalAlignment="Center"
+                            Content="Grant Access"
+                            Click="{x:Bind ViewModel.RequestLocationAccessAsync}"
+                            RelativePanel.Below="locationDeniedText" RelativePanel.AlignHorizontalCenterWithPanel="True"/>
+                </RelativePanel>
+            </controls:ModalDialog.Content>
+        </controls:ModalDialog>
+        
+    </Grid>
+</Page>

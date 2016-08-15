@@ -1,0 +1,112 @@
+<Page x:Class="Renttracker.Views.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:Behaviors="using:Template10.Behaviors"
+      xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
+      xmlns:Interactivity="using:Microsoft.Xaml.Interactivity"
+      xmlns:controls="using:Template10.Controls"
+      xmlns:models="using:Renttracker.Models"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="using:Renttracker.Views"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:vm="using:Renttracker.ViewModels" mc:Ignorable="d">
+
+    <Page.DataContext>
+        <vm:MainPageViewModel x:Name="ViewModel" />
+    </Page.DataContext>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <controls:PageHeader x:Name="Page_Header" Content="Renttracker" Frame="{x:Bind Frame}">
+            <AppBarButton Label="Refresh" Icon="Sync"/>
+            <AppBarButton Click="Filter_Click" Label="Filter homes" Icon="Filter"/>
+        </controls:PageHeader>
+
+        <!--Initial UI (backup)-->
+
+        <!--<StackPanel Orientation="Vertical"
+                    Grid.Row="0"
+                    x:Name="FilteringGrid">
+            <ToggleSwitch x:Name="PriceFilterToggleSwitch"
+                          Margin="12"
+                          IsOn="False"
+                          Toggled="{x:Bind ViewModel.PriceToggleSwitchToggled}"/>
+            <StackPanel Orientation="Horizontal"
+                        x:Name="PriceStackPanel">
+                <TextBox Header="Min price"
+                         IsEnabled="{Binding ElementName=PriceFilterToggleSwitch, Path=IsOn, Mode=OneWay}"
+                         Text="{x:Bind ViewModel.MinPrice, Mode=TwoWay}"
+                         Margin="12"/>
+                <TextBox Header="Max price"
+                         IsEnabled="{Binding ElementName=PriceFilterToggleSwitch, Path=IsOn, Mode=OneWay}"
+                         Text="{x:Bind ViewModel.MaxPrice, Mode=TwoWay}"
+                         Margin="12"/>
+            </StackPanel>
+            <ToggleSwitch x:Name="BedsFilterToggleSwitch"
+                          Margin="12"
+                          IsOn="False"
+                          Toggled="{x:Bind ViewModel.BedsToggleSwitchToggled}"/>
+            <StackPanel Orientation="Horizontal"
+                        x:Name="BedsStackPanel">
+                <TextBox Header="Min beds"
+                         IsEnabled="{Binding ElementName=BedsFilterToggleSwitch, Path=IsOn, Mode=OneWay}"
+                         Text="{x:Bind ViewModel.MinBeds, Mode=TwoWay}"
+                         Margin="12"/>
+                <TextBox Header="Max beds"
+                         IsEnabled="{Binding ElementName=BedsFilterToggleSwitch, Path=IsOn, Mode=OneWay}"
+                         Text="{x:Bind ViewModel.MaxBeds, Mode=TwoWay}"
+                         Margin="12"/>
+            </StackPanel>
+        </StackPanel>-->
+
+        <GridView x:Name="HomesGridView" ItemsSource="{x:Bind ViewModel.Homes, Mode=OneWay}" IsItemClickEnabled="True" ItemClick="{x:Bind ViewModel.HomeItemClick}" Margin="0,48,0,0">
+            <GridView.ItemContainerStyle>
+                <Style TargetType="GridViewItem"/>
+            </GridView.ItemContainerStyle>
+            <GridView.ItemTemplate>
+                <DataTemplate x:DataType="models:Home">
+                    <Grid Height="220" Width="220" Margin="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Image Source="{x:Bind Images[0]}" Grid.Row="0" Stretch="UniformToFill" Height="200" Width="200"/>
+                        <TextBlock Text="{x:Bind Name}" Grid.Row="1" TextWrapping="Wrap" Margin="10"/>
+                    </Grid>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
+        <ContentDialog x:Name="Filter_Dialog" Title="Filter Homes" SecondaryButtonClick="Cancel_Click" SecondaryButtonText="Apply and Close">
+            <ContentDialog.Foreground>
+                <SolidColorBrush Color="{StaticResource SystemAccentColor}"/>
+            </ContentDialog.Foreground>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <ToggleSwitch x:Name="PriceFilterToggleSwitch" Header="Price filter" IsOn="False" Toggled="{x:Bind ViewModel.PriceToggleSwitchToggled}" OnContent="On" OffContent="Off" Grid.Row="0" Margin="0,5,0,0"/>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Header="Minimum price" IsEnabled="{Binding ElementName=PriceFilterToggleSwitch, Path=IsOn, Mode=OneWay}" Text="{x:Bind ViewModel.MinPrice, Mode=TwoWay}" Grid.Column="0" Margin="0,0,10,0"/>
+                    <TextBox Header="Maximum price" IsEnabled="{Binding ElementName=PriceFilterToggleSwitch, Path=IsOn, Mode=OneWay}" Text="{x:Bind ViewModel.MaxPrice, Mode=TwoWay}" Grid.Column="1" HorizontalAlignment="Right"/>
+                </Grid>
+                <ToggleSwitch x:Name="BedsFilterToggleSwitch" Header="Bed filter" IsOn="False" Toggled="{x:Bind ViewModel.BedsToggleSwitchToggled}" OnContent="On" OffContent="Off" Grid.Row="2" Margin="0,5,0,0"/>
+                <Grid Grid.Row="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Header="Minimum beds" IsEnabled="{Binding ElementName=BedsFilterToggleSwitch, Path=IsOn, Mode=OneWay}" Text="{x:Bind ViewModel.MinBeds, Mode=TwoWay}" Grid.Column="0" Margin="0,0,10,0"/>
+                    <TextBox Header="Maximum beds" IsEnabled="{Binding ElementName=BedsFilterToggleSwitch, Path=IsOn, Mode=OneWay}" Text="{x:Bind ViewModel.MaxBeds, Mode=TwoWay}" Grid.Column="1" HorizontalAlignment="Right"/>
+                </Grid>
+            </Grid>
+        </ContentDialog>
+
+    </Grid>
+</Page>
+
