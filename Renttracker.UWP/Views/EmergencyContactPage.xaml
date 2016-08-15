@@ -12,9 +12,13 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:vm="using:Renttracker.ViewModels" mc:Ignorable="d">
 
+    <Page.DataContext>
+        <vm:EmergencyContactPageViewModel x:Name="ViewModel" />
+    </Page.DataContext>
+    
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <controls:PageHeader x:Name="Page_Header" Content="Emergency Contact Information" Frame="{x:Bind Frame}">
-            <AppBarButton Label="Call SOS Number" Icon="ReportHacked" Click="AppBarButton_Click"/>
+            <AppBarButton Label="Call SOS Number" Icon="ReportHacked" Click="{x:Bind ViewModel.ContactEmergencyServices}" />
         </controls:PageHeader>
         <TextBlock Text="To call the emergency services in your country, select the shield icon in the header bar." Margin="0,48,0,0" TextWrapping="Wrap"/>
     </Grid>

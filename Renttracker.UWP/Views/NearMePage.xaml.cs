@@ -27,14 +27,6 @@ namespace Renttracker.Views
         {
             this.InitializeComponent();
         }
-        private async void GeolocateButton_Click(object sender, RoutedEventArgs e)
-        {
-            var locator = new Geolocator();
-            locator.DesiredAccuracyInMeters = 50;
-
-            var position = await locator.GetGeopositionAsync();
-
-            await NearMeMap.TrySetViewAsync(position.Coordinate.Point, 18D);
-        }
+       
     }
 }

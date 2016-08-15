@@ -152,6 +152,7 @@
     <Compile Include="Services\CollectionExtensions.cs" />
     <Compile Include="Services\LocationServices\LocationService.cs" />
     <Compile Include="Services\SettingsServices\SettingsService.cs" />
+    <Compile Include="ViewModels\EmergencyContactPageViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="ViewModels\MapPageViewModel.cs" />
     <Compile Include="ViewModels\NearMePageViewModel.cs" />

@@ -44,6 +44,19 @@ namespace Renttracker.ViewModels
             }
         }
 
+        private ContentDialog _FilterDialog;
+        public ContentDialog FilterDialog
+        {
+            get
+            {
+                return _FilterDialog;
+            }
+            private set
+            {
+                Set(ref _FilterDialog, value);
+            }
+        }
+
         
 
         int _maxBeds = 5;
@@ -62,9 +75,17 @@ namespace Renttracker.ViewModels
             BedsFilter = a => a.Beds <= MaxBeds && a.Beds >= MinBeds;
         }
 
+        public async void ShowFilterDialog(object sender,
+            RoutedEventArgs e) => await Dispatcher.DispatchAsync(async () => await FilterDialog.ShowAsync());
+
+        public void HideFilterDialog(object sender,
+            ContentDialogButtonClickEventArgs e) => FilterDialog.Hide();
+
 
         public override async Task OnNavigatedToAsync(object parameter, NavigationMode mode, IDictionary<string, object> suspensionState)
         {
+            FilterDialog = (NavigationService.Content as MainPage).FindName(nameof(FilterDialog)) as ContentDialog;
+
 
             if (DeviceUtils.Current().IsPhone())
             {

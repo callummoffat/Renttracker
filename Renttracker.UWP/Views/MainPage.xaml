@@ -18,7 +18,7 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <controls:PageHeader x:Name="Page_Header" Content="Renttracker" Frame="{x:Bind Frame}">
             <AppBarButton Label="Refresh" Icon="Sync"/>
-            <AppBarButton Click="Filter_Click" Label="Filter homes" Icon="Filter"/>
+            <AppBarButton Click="{x:Bind ViewModel.ShowFilterDialog}" Label="Filter homes" Icon="Filter"/>
         </controls:PageHeader>
 
         <!--Initial UI (backup)-->
@@ -75,7 +75,7 @@
                 </DataTemplate>
             </GridView.ItemTemplate>
         </GridView>
-        <ContentDialog x:Name="Filter_Dialog" Title="Filter Homes" SecondaryButtonClick="Cancel_Click" SecondaryButtonText="Apply and Close">
+        <ContentDialog x:Name="FilterDialog" Title="Filter Homes" SecondaryButtonClick="{x:Bind ViewModel.HideFilterDialog}" SecondaryButtonText="Apply and Close">
             <ContentDialog.Foreground>
                 <SolidColorBrush Color="{StaticResource SystemAccentColor}"/>
             </ContentDialog.Foreground>

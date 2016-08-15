@@ -162,6 +162,11 @@ namespace Renttracker.ViewModels
             MainMapControl.Center = mapPoint;
         }
 
+        public void OnDrivingDirectionsButtonClicked(object sender, RoutedEventArgs e)
+        {
+            // NOT IMPLEMENTED
+        }
+
         public override async Task OnNavigatingFromAsync(NavigatingEventArgs args)
         {
           

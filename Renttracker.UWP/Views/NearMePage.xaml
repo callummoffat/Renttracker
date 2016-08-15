@@ -20,7 +20,7 @@
         <controls:PageHeader x:Name="Page_Header" Content="Near Me" Frame="{x:Bind Frame}">
             <AppBarButton x:Name="ZoomInButton" Click="{x:Bind ViewModel.OnZoomInButtonClicked}" Label="Zoom In" Icon="ZoomIn"/>
             <AppBarButton x:Name="ZoomOutButton" Click="{x:Bind ViewModel.OnZoomOutButtonClicked}" Label="Zoom Out" Icon="ZoomOut"/>
-            <AppBarButton x:Name="GeolocateButton" Label="Find Me" Icon="Target" Click="GeolocateButton_Click"/>
+            <AppBarButton x:Name="GeolocateButton" Label="Find Me" Icon="Target" Click="{x:Bind ViewModel.OnGeolocateButtonClicked}"/>
         </controls:PageHeader>
         <Maps:MapControl x:Name="NearMeMap" Margin="0,48,0,0" BusinessLandmarksVisible="True" PedestrianFeaturesVisible="True" LandmarksVisible="True" MapServiceToken="QaRpnH3tREpexWlb668X~59dRrh2hYh-Xuw5QL-G1Vg~AvPKUytGs4SGEfaVOCmjC554LE0kQD_DxBzQS8FKA7Lfk7TDGRhOzfdkz-c9vti9"/>
     </Grid>
