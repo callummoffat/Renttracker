@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Renttracker.Models;
+using Microsoft.WindowsAzure.MobileServices;
 
 namespace Renttracker.Services.DataServices
 {
@@ -28,6 +29,11 @@ namespace Renttracker.Services.DataServices
         public override event DataSourceUpdatedEventHandler DataSourceUpdated;
 
 
+        public MobileServiceClient CloudService
+        {
+            get;
+            private set;
+        } = new MobileServiceClient("https://renttracker.azurewebsites.net");
 
 
 

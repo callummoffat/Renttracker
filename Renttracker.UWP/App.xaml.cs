@@ -7,6 +7,7 @@ using Template10.Common;
 using System;
 using System.Linq;
 using Windows.UI.Xaml.Data;
+using Microsoft.HockeyApp;
 
 namespace Renttracker
 {
@@ -18,7 +19,7 @@ namespace Renttracker
     {
         public App()
         {
-            Microsoft.HockeyApp.HockeyClient.Current.Configure("59cc7225afff40f88ebd417ad24badda");
+            HockeyClient.Current.Configure("59cc7225afff40f88ebd417ad24badda");
             InitializeComponent();
             SplashFactory = (e) => new Views.Splash(e);
 
